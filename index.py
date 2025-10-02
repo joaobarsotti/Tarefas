@@ -7,13 +7,13 @@ lista_de_tarefas = []
 opcao = 0
 
 while (opcao != 5):
-    print("MENU PRINCIPAL")
+    print("\nMENU PRINCIPAL")
     print("1- Cadastrar tarefa")
     print("2- Exibir tarefas")
     print("3- Alterar tarefa")
     print("4- Concluir tarefa")
     print("5- Sair")
-    opcao = int(input("\nInforme o número da opção desejada: "))
+    opcao = int(input("Informe o número da opção desejada: "))
 
     if (opcao == 1):
         cadastrar_tarefa(lista_de_tarefas)

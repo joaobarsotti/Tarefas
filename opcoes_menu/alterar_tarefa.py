@@ -39,9 +39,28 @@ def alterar_tarefa(lista_de_tarefas):
             print("Nome da tarefa alterado com sucesso!")
         
         elif opcao_alterar == 2:
-            novo_nivel = input("Novo nível: ")
-            tarefa_selecionada['nivel'] = novo_nivel
-            print("Nível da tarefa alterado com sucesso!")
+            print("\n Nova prioridade:")
+            print("1- Baixa")
+            print("2- Média")
+            print("3- Alta")
+
+            try:
+                opcao_prioridade = int(input("Informe o número do novo nível: "))
+                
+                if opcao_prioridade == 1:
+                    nova_prioridade = "Baixa"
+                elif opcao_prioridade == 2:
+                    nova_prioridade= "Média"
+                elif opcao_prioridade == 3:
+                    nova_prioridade = "Alta"
+                else:
+                    print("Opção de prioridade inválida.")
+                    return
+                
+                tarefa_selecionada['prioridade'] = nova_prioridade
+                print("Prioridade da tarefa alterado com sucesso!")
+            except ValueError:
+                print("Valor inválido. Operação de alteração de prioridade cancelada.")
         
         elif opcao_alterar == 3:
             novo_prazo = input("Novo prazo: ")
