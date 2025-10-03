@@ -1,13 +1,15 @@
+from datetime import datetime
+
 def cadastrar_tarefa(lista_de_tarefas):
     print("\nCADASTRAR TAREFA")
     nome_tarefa = input("Nome: ")
     print("\nPrioridade:")
     print("1- Baixa")
     print("2- Média")
-    print("3- ALta")
+    print("3- Alta")
 
     try:
-        opcao_prioridade = int(input("Informe o número do nível: "))
+        opcao_prioridade = int(input("Informe o número da prioridade: "))
 
         if opcao_prioridade == 1:
             prioridade_tarefa = "Baixa"
@@ -23,12 +25,18 @@ def cadastrar_tarefa(lista_de_tarefas):
         print("Valor inválido. Tarefa não cadastrada.")
         return
 
-    prazo_tarefa = input("Prazo: ")
+    while True:
+        prazo_str = input("Prazo (DD-MM-AAAA): ")
+        try:
+            datetime.strptime(prazo_str, "%d/%m/%Y")
+            break
+        except ValueError:
+            print("Formato de data inválido. Por favor, use dd/mm/aaaa.")
 
     nova_tarefa = {
         "nome": nome_tarefa,
         "prioridade": prioridade_tarefa,
-        "prazo": prazo_tarefa,
+        "prazo": prazo_str,
         "status": "Pendente"
     }
 

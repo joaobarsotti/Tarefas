@@ -1,10 +1,13 @@
+from datetime import datetime
+
 def exibir_tarefa(lista_de_tarefas):
     print("\nEXIBIR TAREFA")
     print("\nOpções de exibição: ")
     print("1- Todas as tarefas")
     print("2- Tarefas pendentes")
     print("3- Por prioridade")
-    print("4- Voltar")
+    print("4- Por prazo")
+    print("5- Voltar")
 
     try:
         opcao_exibir = int(input("Informe sua opção: "))
@@ -19,15 +22,16 @@ def exibir_tarefa(lista_de_tarefas):
     if (opcao_exibir == 1):
         print("\nOPÇÃO 1 - TODAS AS TAREFAS")
         for i, tarefa in enumerate(lista_de_tarefas):
-            print(f"\n--- Tarefa {i+1} ---")
+            print("\n")
+            print("-" * 20)
             print(f"Nome: {tarefa['nome']}")
             print(f"Nível: {tarefa['prioridade']}")
             print(f"Prazo: {tarefa['prazo']}")
             print(f"Status: {tarefa['status']}")
-            print("-" * 10)
+            print("-" * 20)
     
     elif (opcao_exibir == 2):
-        print("\n OPÇÃO 2 - TAREFAS PENDENTES")
+        print("\nOPÇÃO 2 - TAREFAS PENDENTES")
         tarefas_pendentes = []
 
         for tarefa in lista_de_tarefas:
@@ -38,14 +42,16 @@ def exibir_tarefa(lista_de_tarefas):
             print("Não há tarefas pendentes")
         else:
             for tarefa in tarefas_pendentes:
-                print(f"\nNome: {tarefa['nome']}")
+                print("\n")
+                print("-" * 20)
+                print(f"Nome: {tarefa['nome']}")
                 print(f"Nível: {tarefa['prioridade']}")
                 print(f"Prazo: {tarefa['prazo']}")
-                print("-" * 10)
+                print("-" * 20)
 
     elif (opcao_exibir == 3):
         print("\nOPÇÃO 3 - POR PRIORIDADE")
-        print("\n1- Baixa")
+        print("1- Baixa")
         print("2- Média")
         print("3- Alta")
 
@@ -65,12 +71,13 @@ def exibir_tarefa(lista_de_tarefas):
             encontrou_prioridade = False
             for tarefa in lista_de_tarefas:
                 if tarefa['prioridade'] == prioridade_escolhida:
-                    print(f"---")
+                    print("\n")
+                    print("-" * 20)
                     print(f"Nome: {tarefa['nome']}")
                     print(f"Prioridade: {tarefa['prioridade']}")
                     print(f"Prazo: {tarefa['prazo']}")
                     print(f"Status: {tarefa['status']}")
-                    print("-" * 10)
+                    print("-" * 20)
                     encontrou_prioridade = True
 
             if not encontrou_prioridade:
@@ -80,6 +87,20 @@ def exibir_tarefa(lista_de_tarefas):
             print("\nOpção inválida. Por favor, digite um número (1, 2 ou 3).")
     
     elif opcao_exibir == 4:
+        print("\nPOR PRAZO")
+
+        tarefas_ordenadas = sorted(lista_de_tarefas, key=lambda tarefa: datetime.strptime(tarefa['prazo'], "%d/%m/%Y"))
+
+        for tarefa in tarefas_ordenadas:
+            print("\n")
+            print("-" * 20)
+            print(f"Nome: {tarefa['nome']}")
+            print(f"Prioridade: {tarefa['prioridade']}")
+            print(f"Prazo: {tarefa['prazo']}")
+            print(f"Status: {tarefa['status']}")
+            print("-" * 20)
+
+    elif opcao_exibir == 5:
         return
     else:
         print("Opção inválida. Por favor, informe um número de 1 a 4.")

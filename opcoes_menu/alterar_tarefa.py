@@ -22,10 +22,9 @@ def alterar_tarefa(lista_de_tarefas):
 
         print("\nO que você deseja alterar?")
         print("1- Nome")
-        print("2- Nível")
+        print("2- Prioridade")
         print("3- Prazo")
-        print("4- Status")
-        print("5- Cancelar")
+        print("4- Cancelar")
 
         try:
             opcao_alterar = int(input("Informe o número da opção: "))
@@ -68,11 +67,6 @@ def alterar_tarefa(lista_de_tarefas):
             print("Prazo da tarefa alterado com sucesso!")
         
         elif opcao_alterar == 4:
-            novo_status = input("Novo status: ")
-            tarefa_selecionada['status'] = novo_status
-            print("Status da tarefa alterado com sucesso!")
-        
-        elif opcao_alterar == 5:
             print("Operação cancelada.")
 
         else:
