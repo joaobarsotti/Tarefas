@@ -1,6 +1,7 @@
 from opcoes_menu.cadastrar_tarefa import cadastrar_tarefa
 from opcoes_menu.exibir_tarefa import exibir_tarefa
 from opcoes_menu.alterar_tarefa import alterar_tarefa
+from opcoes_menu.concluir_tarefa import concluir_tarefa
 
 lista_de_tarefas = []
 
@@ -25,7 +26,7 @@ while (opcao != 5):
         alterar_tarefa(lista_de_tarefas)    
 
     elif (opcao == 4):
-        pass
+        concluir_tarefa(lista_de_tarefas)
 
     elif (opcao == 5):
         print("Encerrando o programa")

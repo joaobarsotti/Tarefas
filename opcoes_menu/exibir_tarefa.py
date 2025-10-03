@@ -64,7 +64,7 @@ def exibir_tarefa(lista_de_tarefas):
         
             encontrou_prioridade = False
             for tarefa in lista_de_tarefas:
-                if tarefa["nivel"] == prioridade_escolhida:
+                if tarefa['prioridade'] == prioridade_escolhida:
                     print(f"---")
                     print(f"Nome: {tarefa['nome']}")
                     print(f"Prioridade: {tarefa['prioridade']}")
