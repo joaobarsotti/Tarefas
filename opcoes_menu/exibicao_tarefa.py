@@ -1,6 +1,6 @@
 from datetime import datetime
 
-def exibir_tarefa(lista_de_tarefas):
+def exibir_tarefas(lista_de_tarefas):
     print("\nEXIBIR TAREFA")
     print("\nOpções de exibição: ")
     print("1- Todas as tarefas")

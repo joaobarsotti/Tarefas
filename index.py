@@ -1,48 +1,37 @@
-from opcoes_menu.cadastrar_tarefa import cadastrar_tarefa
-from opcoes_menu.exibir_tarefa import exibir_tarefa
-from opcoes_menu.alterar_tarefa import alterar_tarefa
-from opcoes_menu.concluir_tarefa import concluir_tarefa
-from opcoes_menu.excluir_tarefa import excluir_tarefa
+from opcoes_menu.menu import menu
+from opcoes_menu.cadastro_tarefa import cadastrar_tarefa
+from opcoes_menu.exibicao_tarefa import exibir_tarefas
+from opcoes_menu.alteracao_tarefa import alterar_tarefa
+from opcoes_menu.conclusao_tarefa import concluir_tarefa
+from opcoes_menu.exclusao_tarefa import excluir_tarefa
 
-from gerenciador_arquivos import carregar_tarefas
-from gerenciador_arquivos import salvar_tarefas
+from gerenciador_arquivos.carregar_tarefas import carregar_tarefas
+from gerenciador_arquivos.salvar_tarefas import salvar_tarefas
 
-import json
-from os.path import exists
+lista_de_tarefas = carregar_tarefas()
 
+while True:
+    opcao = menu()
 
-lista_de_tarefas = [] #carregar_tarefas()
-
-opcao = 0
-
-while (opcao != 6):
-    print("\nMENU PRINCIPAL")
-    print("1- Cadastrar tarefa")
-    print("2- Exibir tarefas")
-    print("3- Alterar tarefa")
-    print("4- Concluir tarefa")
-    print("5- Excluir tarefa")
-    print("6- Sair")
-    opcao = int(input("Informe o número da opção desejada: "))
-
-    if (opcao == 1):
+    if opcao == 1:
         cadastrar_tarefa(lista_de_tarefas)
 
-    elif (opcao == 2):
-        exibir_tarefa(lista_de_tarefas)
+    elif opcao == 2:
+        exibir_tarefas(lista_de_tarefas)
     
-    elif (opcao == 3):
+    elif opcao == 3:
         alterar_tarefa(lista_de_tarefas)    
 
-    elif (opcao == 4):
+    elif opcao == 4:
         concluir_tarefa(lista_de_tarefas)
 
-    elif (opcao == 5):
+    elif opcao == 5:
         excluir_tarefa(lista_de_tarefas)
 
-    elif (opcao == 6):
+    elif opcao == 6:
         salvar_tarefas(lista_de_tarefas)
         print("Encerrando o programa. As tarefas foram salvas.")
+        break
     else:
-        print("Opção inválida. Por favor, tente novamente.")
+        print("Opção inválida. Por favor, digite um número de 1 a 6.")
         
