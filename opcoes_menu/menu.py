@@ -1,3 +1,14 @@
+import os
+
+def limpar_tela():
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        os.system('clear')
+
+def pausar():
+    input("\nPressione Enter para continuar...")
+
 def menu():
     print("\nMENU PRINCIPAL")
     print("1- Cadastrar tarefa")

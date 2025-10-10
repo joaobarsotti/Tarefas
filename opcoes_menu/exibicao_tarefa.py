@@ -1,6 +1,8 @@
 from datetime import datetime
+from opcoes_menu.menu import limpar_tela, pausar
 
 def exibir_tarefas(lista_de_tarefas):
+    limpar_tela()
     print("\nEXIBIR TAREFA")
     print("\nOpções de exibição: ")
     print("1- Todas as tarefas")
@@ -11,12 +13,15 @@ def exibir_tarefas(lista_de_tarefas):
 
     try:
         opcao_exibir = int(input("Informe sua opção: "))
+        limpar_tela()
     except ValueError:
         print("Opção inválida. Por favor, digite um número de 1 a 4.")
+        pausar()
         return
 
     if not lista_de_tarefas:
         print("Nenhuma tarefa cadastrada")
+        pausar()
         return
 
     if (opcao_exibir == 1):
@@ -65,9 +70,13 @@ def exibir_tarefas(lista_de_tarefas):
             elif opcao_prioridade == 3:
                 prioridade_escolhida = "Alta"
             else:
+                limpar_tela()
                 print("\nOpção inválida. Por favor, digite um número (1, 2 ou 3).")
+                pausar()
                 return
         
+            limpar_tela()
+                    
             encontrou_prioridade = False
             for tarefa in lista_de_tarefas:
                 if tarefa['prioridade'] == prioridade_escolhida:
@@ -85,22 +94,35 @@ def exibir_tarefas(lista_de_tarefas):
             
         except ValueError:
             print("\nOpção inválida. Por favor, digite um número (1, 2 ou 3).")
+            pausar()
+            return
     
     elif opcao_exibir == 4:
         print("\nPOR PRAZO")
 
-        tarefas_ordenadas = sorted(lista_de_tarefas, key=lambda tarefa: datetime.strptime(tarefa['prazo'], "%d/%m/%Y"))
+        try:
+            tarefas_ordenadas = sorted(lista_de_tarefas, key=lambda tarefa: datetime.strptime(tarefa['prazo'], "%d/%m/%Y"))
 
-        for tarefa in tarefas_ordenadas:
-            print("\n")
-            print("-" * 20)
-            print(f"Nome: {tarefa['nome']}")
-            print(f"Prioridade: {tarefa['prioridade']}")
-            print(f"Prazo: {tarefa['prazo']}")
-            print(f"Status: {tarefa['status']}")
-            print("-" * 20)
+            for tarefa in tarefas_ordenadas:
+                print("\n")
+                print("-" * 20)
+                print(f"Nome: {tarefa['nome']}")
+                print(f"Prioridade: {tarefa['prioridade']}")
+                print(f"Prazo: {tarefa['prazo']}")
+                print(f"Status: {tarefa['status']}")
+                print("-" * 20)
+            
+        except (ValueError, TypeError):
+            print("\nNão foi possível ordenar as tarefas. Verifique se as datas estão no formato dd/mm/aaa")
+
+        pausar()
+        return
 
     elif opcao_exibir == 5:
         return
     else:
-        print("Opção inválida. Por favor, informe um número de 1 a 4.")
+        print("Opção inválida. Por favor, informe um número de 1 a 5.")
+        pausar()
+        return
+    
+    pausar()
