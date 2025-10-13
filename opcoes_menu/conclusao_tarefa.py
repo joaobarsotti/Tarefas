@@ -1,4 +1,8 @@
+from opcoes_menu.menu import limpar_tela, pausar
+from gerenciador_arquivos.salvar_tarefas import salvar_tarefas
+
 def concluir_tarefa(lista_de_tarefas):
+    limpar_tela()
     print("\nOPÇÃO 4 - CONCLUIR TAREFA")
 
     if not lista_de_tarefas:
@@ -13,11 +17,13 @@ def concluir_tarefa(lista_de_tarefas):
         num_tarefa = int(input(f"\nInforme o número da tarefa que deseja alterar: "))
         indice_tarefa = num_tarefa - 1
     except ValueError:
+        limpar_tela()
         print("Valor inválido. Por favor, digite outro número.")
         return
 
     if 0 <= indice_tarefa < len(lista_de_tarefas):
         tarefa_selecionada = lista_de_tarefas[indice_tarefa]
+        limpar_tela()
         print(f"\nTarefa selecionada: {tarefa_selecionada['nome']}")
         print("Marcar como concluída?")
         print("1- Sim")
@@ -28,13 +34,20 @@ def concluir_tarefa(lista_de_tarefas):
 
             if opcao_concluir == 1:
                 tarefa_removida = lista_de_tarefas.pop(indice_tarefa)
+                limpar_tela()
                 print(f"Tarefa '{tarefa_removida['nome']}' concluída e removida da lista!")
+                salvar_tarefas(lista_de_tarefas)
             elif opcao_concluir == 2:
+                limpar_tela()
                 print("operação cancelada")
             else:
+                limpar_tela()
                 print("Opção inválida. Operação cancelada")
         except ValueError:
+            limpar_tela()
             print("Valor inválido. Por favor, digite 1 para Sim ou 2 para Não.")
     else:
         print("Numero de tarefa inválido")
+        
+pausar()
         

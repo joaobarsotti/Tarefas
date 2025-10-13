@@ -10,7 +10,7 @@ def pausar():
     input("\nPressione Enter para continuar...")
 
 def menu():
-    print("\nMENU PRINCIPAL")
+    print("MENU PRINCIPAL")
     print("1- Cadastrar tarefa")
     print("2- Exibir tarefas")
     print("3- Alterar tarefa")

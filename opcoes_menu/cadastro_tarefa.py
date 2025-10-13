@@ -1,6 +1,10 @@
+import time
 from datetime import datetime
+from opcoes_menu.menu import limpar_tela, pausar
+from gerenciador_arquivos.salvar_tarefas import salvar_tarefas
 
 def cadastrar_tarefa(lista_de_tarefas):
+    limpar_tela()
     print("\nCADASTRAR TAREFA")
     nome_tarefa = input("Nome: ")
     print("\nPrioridade:")
@@ -19,14 +23,16 @@ def cadastrar_tarefa(lista_de_tarefas):
             prioridade_tarefa = "Alta"
         else:
             print("Opção de prioridade inválida. Tarefa não cadastrada")
+            pausar()
             return
     
     except ValueError:
         print("Valor inválido. Tarefa não cadastrada.")
+        pausar()
         return
 
     while True:
-        prazo_str = input("Prazo (DD-MM-AAAA): ")
+        prazo_str = input("\nPrazo (DD-MM-AAAA): ")
         try:
             datetime.strptime(prazo_str, "%d/%m/%Y")
             break
@@ -41,4 +47,12 @@ def cadastrar_tarefa(lista_de_tarefas):
     }
 
     lista_de_tarefas.append(nova_tarefa)
-    print("Tarefa cadastrada!")
+    
+    salvar_tarefas(lista_de_tarefas)
+
+    limpar_tela()
+    print("\nTarefa cadastrada com sucesso!")
+    print(f"Nome: {nome_tarefa}")
+    print(f"Prioridade: {prioridade_tarefa}")
+    print(f"Prazo: {prazo_str}")
+    time.sleep(2)

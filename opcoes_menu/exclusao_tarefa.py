@@ -1,4 +1,5 @@
 from opcoes_menu.menu import limpar_tela, pausar
+from gerenciador_arquivos.salvar_tarefas import salvar_tarefas
 
 def excluir_tarefa(lista_de_tarefas):
     limpar_tela()
@@ -37,6 +38,7 @@ def excluir_tarefa(lista_de_tarefas):
             if opcao_excluir == 1:
                 tarefa_removida = lista_de_tarefas.pop(indice_tarefa)
                 print(f"Tarefa '{tarefa_removida['nome']}' excluída!")
+                salvar_tarefas(lista_de_tarefas)
             elif opcao_excluir == 2:
                 print("Operação cancelada")
             else:

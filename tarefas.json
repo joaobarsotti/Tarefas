@@ -2,13 +2,13 @@
     {
         "nome": "Ler",
         "prioridade": "Baixa",
-        "prazo": "14/12/2025",
+        "prazo": "13/10/2025",
         "status": "Pendente"
     },
     {
         "nome": "Estudar",
-        "prioridade": "M\u00e9dia",
-        "prazo": "10/10/2025",
+        "prioridade": "Alta",
+        "prazo": "15/10/2025",
         "status": "Pendente"
     }
 ]

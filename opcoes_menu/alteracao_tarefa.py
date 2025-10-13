@@ -1,5 +1,6 @@
 import time
 from opcoes_menu.menu import limpar_tela, pausar
+from gerenciador_arquivos.salvar_tarefas import salvar_tarefas
 
 def alterar_tarefa(lista_de_tarefas):
     limpar_tela()
@@ -49,6 +50,7 @@ def alterar_tarefa(lista_de_tarefas):
             tarefa_selecionada['nome'] = novo_nome
             limpar_tela()
             print("Nome da tarefa alterado com sucesso!")
+            salvar_tarefas(lista_de_tarefas)
         
         elif opcao_alterar == 2:
             limpar_tela()
@@ -75,6 +77,7 @@ def alterar_tarefa(lista_de_tarefas):
                 tarefa_selecionada['prioridade'] = nova_prioridade
                 limpar_tela()
                 print("Prioridade da tarefa alterado com sucesso!")
+                salvar_tarefas(lista_de_tarefas)
             except ValueError:
                 limpar_tela()
                 print("Valor inválido. Operação de alteração de prioridade cancelada.")
@@ -87,12 +90,11 @@ def alterar_tarefa(lista_de_tarefas):
             tarefa_selecionada['prazo'] = novo_prazo
             limpar_tela()
             print("Prazo da tarefa alterado com sucesso!")
+            salvar_tarefas(lista_de_tarefas)
         
         elif opcao_alterar == 4:
             limpar_tela()
             print("Operação cancelada. Voltando ao menu principal...")
-            time.sleep(2)
-            return
 
         else:
             limpar_tela()
