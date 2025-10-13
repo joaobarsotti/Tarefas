@@ -1,4 +1,4 @@
-from opcoes_menu.menu import menu, limpar_tela
+from opcoes_menu.menu import menu, limpar_tela, pausar
 from opcoes_menu.cadastro_tarefa import cadastrar_tarefa
 from opcoes_menu.exibicao_tarefa import exibir_tarefas
 from opcoes_menu.alteracao_tarefa import alterar_tarefa
@@ -35,4 +35,5 @@ while True:
         break
     else:
         print("Opção inválida. Por favor, digite um número de 1 a 6.")
+        pausar()
         

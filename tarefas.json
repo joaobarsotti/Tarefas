@@ -10,5 +10,11 @@
         "prioridade": "Alta",
         "prazo": "15/10/2025",
         "status": "Pendente"
+    },
+    {
+        "nome": "Fazer dever",
+        "prioridade": "Baixa",
+        "prazo": "14/10/2025",
+        "status": "Pendente"
     }
 ]
